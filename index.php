@@ -1,9 +1,22 @@
 <?php
+session_start();
 include "/MAMP/htdocs/php-strong-password-generator/function.php";
 if (isset($_GET['length'])) {
     $length = $_GET['length'];
-    echo generatePassword($length);
+    $_SESSION['password'] = generatePassword($length);
+    header('Location: password.php');
 }
+
+
+class address {
+    public static $country = 'italy';
+
+     public function __construct( $street) {
+        $this->country = $street;
+    }
+}
+
+echo address :: $country;
 ?>
 
 
